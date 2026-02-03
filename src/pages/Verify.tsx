@@ -199,7 +199,9 @@ const Verify = ({ onVerified }: VerifyProps) => {
             {message}
           </div>
         ) : null}
-        <p className="subtitle"> Si tu n'es pas Hanna tu n'y a pas le droit <br></br><br></br>
+        <p className="subtitle"> 
+          <br></br>
+          Si tu n'es pas Hanna tu n'y a pas le droit <br></br>
           Passe ta route mon gars
         </p>
       </div>

@@ -12,7 +12,7 @@ const Bonus = () => {
         <p className="subtitle">Une petite vidéo rien que pour toi.</p>
         <div className="video-box">
           {videoError ? (
-            <div className="photo-placeholder">
+            <div className="video-placeholder">
               Ajoute /public/assets/bonus.mp4
             </div>
           ) : (

@@ -284,6 +284,19 @@ p {
   padding: 12px;
 }
 
+.photo-placeholder {
+  height: auto;
+  width: 100%;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffe5f1, #fff5fb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 13px;
+  padding: 12px;
+}
+
 .note {
   background: #fff5fb;
   border-left: 4px solid var(--primary);

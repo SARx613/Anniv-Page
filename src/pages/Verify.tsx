@@ -199,9 +199,8 @@ const Verify = ({ onVerified }: VerifyProps) => {
             {message}
           </div>
         ) : null}
-        <p className="subtitle">
-          Assure-toi d'avoir une photo claire et de face dans
-          <strong> public/reference/hanna.jpg</strong>.
+        <p className="subtitle"> Si tu n'es pas Hanna tu n'y a pas le droit <br>
+          Passe ta route mon gars
         </p>
       </div>
     </div>

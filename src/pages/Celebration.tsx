@@ -73,6 +73,19 @@ const Celebration = () => {
     }
   };
 
+  const handleGiftClick = async () => {
+    setGiftOpened(true);
+    if (playing || audioError || !audioRef.current) {
+      return;
+    }
+    try {
+      await audioRef.current.play();
+      setPlaying(true);
+    } catch (error) {
+      setAudioError(true);
+    }
+  };
+
   return (
     <div className="page">
       <div className="confetti-wrap" aria-hidden="true">
@@ -101,7 +114,7 @@ const Celebration = () => {
             <button
               type="button"
               className="gift-button"
-              onClick={() => setGiftOpened(true)}
+              onClick={handleGiftClick}
             >
               {giftError ? (
                 <div className="photo-placeholder">

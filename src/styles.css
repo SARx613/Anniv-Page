@@ -285,8 +285,8 @@ p {
 }
 
 .video-placeholder {
-  height: auto;
-  width: 100%;
+  height: 100%;
+  width: auto;
   border-radius: 12px;
   background: linear-gradient(135deg, #ffe5f1, #fff5fb);
   display: flex;

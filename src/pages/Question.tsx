@@ -35,7 +35,7 @@ const Question = () => {
               fontSize: `${fontSize}px`,
             }}
           >
-            {clicksLeft > 1 ? `Oui (${clicksLeft}x)` : "Oui"}
+            {clicksLeft > 1 ? `Oui` : "Oui"}
           </button>
         </NoButtonDodge>
       </div>

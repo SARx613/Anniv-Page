@@ -26,6 +26,8 @@ const PhotoTile = ({ src, label }: { src: string; label: string }) => {
   );
 };
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 const Celebration = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
@@ -48,10 +50,10 @@ const Celebration = () => {
   );
 
   const photos = [
-    { src: "/assets/photo1.jpg", label: "Ajoute photo1.jpg" },
-    { src: "/assets/photo2.jpg", label: "Ajoute photo2.jpg" },
-    { src: "/assets/photo3.jpg", label: "Ajoute photo3.jpg" },
-    { src: "/assets/photo4.jpg", label: "Ajoute photo4.jpg" },
+    { src: `${BASE_URL}assets/photo1.jpg`, label: "Ajoute photo1.jpg" },
+    { src: `${BASE_URL}assets/photo2.jpg`, label: "Ajoute photo2.jpg" },
+    { src: `${BASE_URL}assets/photo3.jpg`, label: "Ajoute photo3.jpg" },
+    { src: `${BASE_URL}assets/photo4.jpg`, label: "Ajoute photo4.jpg" },
   ];
 
   const toggleMusic = async () => {
@@ -108,7 +110,7 @@ const Celebration = () => {
               ) : (
                 <img
                   className="gift-image"
-                  src="/assets/gift.png"
+                  src={`${BASE_URL}assets/gift.png`}
                   alt="Cadeau"
                   onError={() => setGiftError(true)}
                 />
@@ -159,7 +161,7 @@ const Celebration = () => {
         </div>
         <audio
           ref={audioRef}
-          src="/assets/song.mp3"
+          src={`${BASE_URL}assets/song.mp3`}
           onError={() => setAudioError(true)}
         />
       </div>

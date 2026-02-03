@@ -6,8 +6,9 @@ type VerifyProps = {
   onVerified: () => void;
 };
 
-const MODEL_URL = "/models";
-const REFERENCE_URL = "/reference/hanna.jpg";
+const BASE_URL = import.meta.env.BASE_URL;
+const MODEL_URL = `${BASE_URL}models`;
+const REFERENCE_URL = `${BASE_URL}reference/hanna.jpg`;
 const DISTANCE_THRESHOLD = 0.55;
 
 const Verify = ({ onVerified }: VerifyProps) => {

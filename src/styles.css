@@ -366,6 +366,14 @@ p {
   gap: 12px;
 }
 
+.music-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 .fade-in {
   animation: fadeIn 0.6s ease;
 }

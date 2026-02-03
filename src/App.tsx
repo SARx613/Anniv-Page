@@ -4,6 +4,7 @@ import Verify from "./pages/Verify";
 import Welcome from "./pages/Welcome";
 import Question from "./pages/Question";
 import Celebration from "./pages/Celebration";
+import Bonus from "./pages/Bonus";
 
 type RequireVerifiedProps = {
   verified: boolean;
@@ -52,6 +53,14 @@ const App = () => {
           element={
             <RequireVerified verified={verified}>
               <Celebration />
+            </RequireVerified>
+          }
+        />
+        <Route
+          path="/bonus"
+          element={
+            <RequireVerified verified={verified}>
+              <Bonus />
             </RequireVerified>
           }
         />

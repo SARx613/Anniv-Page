@@ -1,3 +1,4 @@
 Ajoute des photos: photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg.
 Optionnel: song.mp3 pour la musique.
 Ajoute un cadeau: gift.png.
+Ajoute une video bonus: bonus.mp4.

@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type ConfettiPiece = {
   id: number;
@@ -29,6 +30,7 @@ const PhotoTile = ({ src, label }: { src: string; label: string }) => {
 const BASE_URL = import.meta.env.BASE_URL;
 
 const Celebration = () => {
+  const navigate = useNavigate();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [audioError, setAudioError] = useState(false);
@@ -134,21 +136,23 @@ const Celebration = () => {
             <div className="gift-opened">
               <div className="gift-burst" aria-hidden="true" />
               <div className="note">
+              <h2 className="hero">Joyeux anniversaire mon Amour ❤️❤️❤️</h2>
                 <p>
+                  21 ans que le monde a la chance de t'avoir et ça n'est que le début. 
                   Mon amour, ça fait bientôt 3 ans que tu remplis ma vie de joie.
+                  Ton sourire, ta voix, ton humour, tes tiktoks, tes danses, comment s'en passer ?
                 </p>
                 <p>
-                  Tu es la plus forte, la plus lumineuse, et tu me donnes envie
-                  d'être meilleur chaque jour.
+                  Je te souhaite le meilleur anniversaire de ta vie !
+                  Que cette année soit pleine de bonnes surprises, de joies, de réussites et d'<i>un peu de travail quand même</i>.
                 </p>
                 <p>
-                  Dans un mois je pars 6 mois en Argentine, et tu vas
-                  terriblement me manquer… mais je t'emporte partout avec moi.
-                </p>
-                <p>
-                  L'an prochain pour ton alyah, je serai ton premier supporter.
+                  Les épreuves arrivent et je t'aime plus que jamais.
+                  Je nous souhaite le meilleur entre Paris, Buenos Aires et Tel aviv !
                 </p>
                 <p>Je t'aime fort, très fort.</p>
+                <p>Gros bisous 💋</p>
+                <p>Ton Namoureux</p>
               </div>
             </div>
           )}
@@ -158,7 +162,7 @@ const Celebration = () => {
             <PhotoTile key={photo.src} src={photo.src} label={photo.label} />
           ))}
         </div>
-        <div className="music-toggle">
+        <div className="music-row">
           <button
             type="button"
             className="button button-primary"
@@ -166,12 +170,19 @@ const Celebration = () => {
           >
             {playing ? "Mettre en pause" : "Lancer la musique"}
           </button>
-          {audioError ? (
-            <span className="subtitle">
-              Ajoute /public/assets/song.mp3 pour la musique.
-            </span>
-          ) : null}
+          <button
+            type="button"
+            className="button button-ghost"
+            onClick={() => navigate("/bonus")}
+          >
+            Surprise
+          </button>
         </div>
+        {audioError ? (
+          <span className="subtitle">
+            Ajoute /public/assets/song.mp3 pour la musique.
+          </span>
+        ) : null}
         <audio
           ref={audioRef}
           src={`${BASE_URL}assets/song.mp3`}

@@ -8,10 +8,9 @@ const Welcome = () => {
     <div className="page">
       <HeartRain />
       <div className="card fade-in">
-        <h1 className="hero">Happy Birthday Hanna</h1>
+        <h1 className="hero">Joyeux anniversaire mon Amour ❤️❤️❤️</h1>
         <p className="subtitle">
-          I made this little corner of the internet just for you. There are a
-          few surprises waiting.
+          Merci de me donner le sourire chaque jour de ma vie !!
         </p>
         <div className="buttons">
           <button
@@ -19,7 +18,7 @@ const Welcome = () => {
             className="button button-primary"
             onClick={() => navigate("/question")}
           >
-            Continue
+            Continuer
           </button>
         </div>
       </div>

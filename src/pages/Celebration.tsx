@@ -30,6 +30,8 @@ const Celebration = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [audioError, setAudioError] = useState(false);
+  const [giftOpened, setGiftOpened] = useState(false);
+  const [giftError, setGiftError] = useState(false);
 
   const confetti = useMemo<ConfettiPiece[]>(
     () =>
@@ -46,10 +48,10 @@ const Celebration = () => {
   );
 
   const photos = [
-    { src: "/assets/photo1.jpg", label: "Add photo1.jpg" },
-    { src: "/assets/photo2.jpg", label: "Add photo2.jpg" },
-    { src: "/assets/photo3.jpg", label: "Add photo3.jpg" },
-    { src: "/assets/photo4.jpg", label: "Add photo4.jpg" },
+    { src: "/assets/photo1.jpg", label: "Ajoute photo1.jpg" },
+    { src: "/assets/photo2.jpg", label: "Ajoute photo2.jpg" },
+    { src: "/assets/photo3.jpg", label: "Ajoute photo3.jpg" },
+    { src: "/assets/photo4.jpg", label: "Ajoute photo4.jpg" },
   ];
 
   const toggleMusic = async () => {
@@ -90,14 +92,51 @@ const Celebration = () => {
         ))}
       </div>
       <div className="card celebration fade-in">
-        <h1 className="hero">Yes! Let us celebrate you.</h1>
-        <p className="subtitle">
-          I cannot wait for tonight. Until then, here are some favorite moments
-          and a little love note.
-        </p>
-        <div className="note">
-          Hanna, you make every day brighter. Thank you for being the most
-          caring, joyful, and inspiring person in my life. Happy birthday.
+        <h1 className="hero">Yallaaaa</h1>
+        <p className="subtitle">Tu mérites alors quelque chose</p>
+        <div className="gift-area">
+          {!giftOpened ? (
+            <button
+              type="button"
+              className="gift-button"
+              onClick={() => setGiftOpened(true)}
+            >
+              {giftError ? (
+                <div className="photo-placeholder">
+                  Ajoute /public/assets/gift.png
+                </div>
+              ) : (
+                <img
+                  className="gift-image"
+                  src="/assets/gift.png"
+                  alt="Cadeau"
+                  onError={() => setGiftError(true)}
+                />
+              )}
+              <span className="gift-hint">Clique sur le cadeau</span>
+            </button>
+          ) : (
+            <div className="gift-opened">
+              <div className="gift-burst" aria-hidden="true" />
+              <div className="note">
+                <p>
+                  Mon amour, ça fait bientôt 3 ans que tu remplis ma vie de joie.
+                </p>
+                <p>
+                  Tu es la plus forte, la plus lumineuse, et tu me donnes envie
+                  d'être meilleur chaque jour.
+                </p>
+                <p>
+                  Dans un mois je pars 6 mois en Argentine, et tu vas
+                  terriblement me manquer… mais je t'emporte partout avec moi.
+                </p>
+                <p>
+                  L'an prochain pour ton alyah, je serai ton premier supporter.
+                </p>
+                <p>Je t'aime fort, très fort.</p>
+              </div>
+            </div>
+          )}
         </div>
         <div className="photo-grid">
           {photos.map((photo) => (
@@ -110,11 +149,11 @@ const Celebration = () => {
             className="button button-primary"
             onClick={toggleMusic}
           >
-            {playing ? "Pause music" : "Play music"}
+            {playing ? "Mettre en pause" : "Lancer la musique"}
           </button>
           {audioError ? (
             <span className="subtitle">
-              Add /public/assets/song.mp3 for music.
+              Ajoute /public/assets/song.mp3 pour la musique.
             </span>
           ) : null}
         </div>

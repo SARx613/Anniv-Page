@@ -37,7 +37,7 @@ const Verify = ({ onVerified }: VerifyProps) => {
         if (mounted) {
           setStatus("error");
           setMessage(
-            "Unable to load face models. Add files to /public/models and try again."
+            "Impossible de charger les modèles. Ajoute les fichiers dans /public/models."
           );
         }
       }
@@ -65,7 +65,7 @@ const Verify = ({ onVerified }: VerifyProps) => {
         if (!detection) {
           setStatus("error");
           setMessage(
-            "Reference photo not detected. Use a clear, front-facing image."
+            "Aucun visage détecté sur la photo de référence. Utilise une photo nette et de face."
           );
           return;
         }
@@ -76,7 +76,7 @@ const Verify = ({ onVerified }: VerifyProps) => {
         if (active) {
           setStatus("error");
           setMessage(
-            "Reference photo missing. Add /public/reference/hanna.jpg."
+            "Photo de référence introuvable. Ajoute /public/reference/hanna.jpg."
           );
         }
       }
@@ -112,7 +112,7 @@ const Verify = ({ onVerified }: VerifyProps) => {
       setCameraReady(true);
     } catch (error) {
       setStatus("error");
-      setMessage("Camera access denied. Please allow camera permissions.");
+      setMessage("Accès caméra refusé. Autorise la caméra et réessaie.");
     }
   };
 
@@ -123,12 +123,12 @@ const Verify = ({ onVerified }: VerifyProps) => {
     if (!referenceDescriptor) {
       setStatus("error");
       setMessage(
-        "Reference descriptor not ready. Check the model files and reference image."
+        "La photo de référence n'est pas prête. Vérifie les modèles et l'image."
       );
       return;
     }
     setStatus("loading");
-    setMessage("Verifying...");
+    setMessage("Vérification...");
 
     const detection = await faceapi
       .detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions())
@@ -137,7 +137,7 @@ const Verify = ({ onVerified }: VerifyProps) => {
 
     if (!detection) {
       setStatus("error");
-      setMessage("No face detected. Move closer and face the camera.");
+      setMessage("Aucun visage détecté. Rapproche-toi et regarde la caméra.");
       return;
     }
 
@@ -148,24 +148,21 @@ const Verify = ({ onVerified }: VerifyProps) => {
 
     if (distance <= DISTANCE_THRESHOLD) {
       setStatus("matched");
-      setMessage("Welcome, Hanna. Access granted.");
+      setMessage("Bienvenue Hanna, accès accordé.");
       onVerified();
       navigate("/welcome");
     } else {
       setStatus("error");
-      setMessage("Face does not match. Please try again.");
+      setMessage("Ce n'est pas toi... réessaie encore 🙂");
     }
   };
 
   return (
     <div className="page">
       <div className="card fade-in">
-        <span className="pill">Private birthday access</span>
-        <h1 className="hero">Hi Hanna, just a quick check</h1>
-        <p className="subtitle">
-          This page uses your camera to verify it is really you before
-          unlocking the surprise.
-        </p>
+        <span className="pill">Accès privé</span>
+        <h1 className="hero">Coucou Hanna, une petite vérification s'impose</h1>
+        <p className="subtitle">La surprise arrive juste après ...</p>
         <div className="video-box">
           <video ref={videoRef} muted playsInline />
         </div>
@@ -176,7 +173,7 @@ const Verify = ({ onVerified }: VerifyProps) => {
             onClick={startCamera}
             disabled={!modelsLoaded || cameraReady}
           >
-            {cameraReady ? "Camera ready" : "Start camera"}
+            {cameraReady ? "Caméra prête" : "Démarrer la caméra"}
           </button>
           <button
             type="button"
@@ -184,12 +181,12 @@ const Verify = ({ onVerified }: VerifyProps) => {
             onClick={handleVerify}
             disabled={!cameraReady || !modelsLoaded}
           >
-            Verify
+            Vérifier
           </button>
         </div>
         {modelsLoaded ? null : (
           <div className="status">
-            Loading face models. Keep this tab open for a moment.
+            Chargement des modèles. Garde cette page ouverte un instant.
           </div>
         )}
         {message ? (
@@ -202,7 +199,7 @@ const Verify = ({ onVerified }: VerifyProps) => {
           </div>
         ) : null}
         <p className="subtitle">
-          Make sure there is good light and a clear, front-facing photo in
+          Assure-toi d'avoir une photo claire et de face dans
           <strong> public/reference/hanna.jpg</strong>.
         </p>
       </div>

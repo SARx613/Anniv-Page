@@ -1,2 +1,3 @@
-Add photos as photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg.
-Optional music file: song.mp3.
+Ajoute des photos: photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg.
+Optionnel: song.mp3 pour la musique.
+Ajoute un cadeau: gift.png.
